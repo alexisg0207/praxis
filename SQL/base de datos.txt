@@ -1,0 +1,269 @@
+-- DROP TABLE profesor_coordinador
+DROP TABLE IF EXISTS "profesor_coordinador" CASCADE;
+
+-- CREATE TABLE profesor_coordinador
+CREATE TABLE "profesor_coordinador" (
+	"id" int4 NOT NULL,
+	"nombre" varchar,
+	"documento" int4,
+	"apellido" varchar,
+	PRIMARY KEY("id")
+);
+
+-- DROP TABLE localidad
+DROP TABLE IF EXISTS "localidad" CASCADE;
+
+-- CREATE TABLE localidad
+CREATE TABLE "localidad" (
+	"id" int4 NOT NULL,
+	"nombre" varchar,
+	PRIMARY KEY("id")
+);
+
+-- DROP TABLE estudiante
+DROP TABLE IF EXISTS "estudiante" CASCADE;
+
+-- CREATE TABLE estudiante
+CREATE TABLE "estudiante" (
+	"codigo" int4 NOT NULL,
+	"documento" int4,
+	"nombre" varchar,
+	"apellido" varchar,
+	PRIMARY KEY("codigo")
+);
+
+-- DROP TABLE control
+DROP TABLE IF EXISTS "control" CASCADE;
+
+-- CREATE TABLE control
+CREATE TABLE "control" (
+	"codigo" int4 NOT NULL,
+	"descripcion" varchar,
+	"fecha" date,
+	PRIMARY KEY("codigo")
+);
+
+-- DROP TABLE director
+DROP TABLE IF EXISTS "director" CASCADE;
+
+-- CREATE TABLE director
+CREATE TABLE "director" (
+	"codigo" int4 NOT NULL,
+	"nombre" varchar,
+	"documento" int4,
+	"apellido" varchar,
+	PRIMARY KEY("codigo")
+);
+
+-- DROP TABLE dependencia
+DROP TABLE IF EXISTS "dependencia" CASCADE;
+
+-- CREATE TABLE dependencia
+CREATE TABLE "dependencia" (
+	"codigo" int4 NOT NULL,
+	"nombre" int4,
+	PRIMARY KEY("codigo")
+);
+
+-- DROP TABLE empresa
+DROP TABLE IF EXISTS "empresa" CASCADE;
+
+-- CREATE TABLE empresa
+CREATE TABLE "empresa" (
+	"nit" varchar NOT NULL,
+	"nombre" varchar,
+	"localidad" int4,
+	"representante" int4,
+	PRIMARY KEY("nit")
+);
+
+-- DROP TABLE responsble
+DROP TABLE IF EXISTS "responsble" CASCADE;
+
+-- CREATE TABLE responsble
+CREATE TABLE "responsble" (
+	"id" int4 NOT NULL,
+	"nombre" int4,
+	"nit_empresa" int4,
+	"empresa_nit" varchar NOT NULL,
+	"apellido" varchar,
+	PRIMARY KEY("id"),
+	CONSTRAINT "Ref_responsble_to_empresa" FOREIGN KEY ("empresa_nit")
+		REFERENCES "empresa"("nit")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE convenio
+DROP TABLE IF EXISTS "convenio" CASCADE;
+
+-- CREATE TABLE convenio
+CREATE TABLE "convenio" (
+	"id" int4 NOT NULL,
+	"fecha_inicio" date,
+	"fecha_fin" date,
+	"documentacion" varchar,
+	"responsable" varchar,
+	"razon" varchar,
+	"practica_externa" int4,
+	"nit_empresa" varchar,
+	PRIMARY KEY("id"),
+	CONSTRAINT "Ref_convenio_to_empresa" FOREIGN KEY ("nit_empresa")
+		REFERENCES "empresa"("nit")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE asignatura
+DROP TABLE IF EXISTS "asignatura" CASCADE;
+
+-- CREATE TABLE asignatura
+CREATE TABLE "asignatura" (
+	"codigo" int4 NOT NULL,
+	"nombre" int4,
+	"estudiante" int4,
+	"coordinador" int4,
+	PRIMARY KEY("codigo"),
+	CONSTRAINT "Ref_asignatura_to_profesor_coordinador" FOREIGN KEY ("coordinador")
+		REFERENCES "profesor_coordinador"("id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE,
+	CONSTRAINT "Ref_asignatura_to_estudiante" FOREIGN KEY ("estudiante")
+		REFERENCES "estudiante"("codigo")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE programa
+DROP TABLE IF EXISTS "programa" CASCADE;
+
+-- CREATE TABLE programa
+CREATE TABLE "programa" (
+	"codigo" int4 NOT NULL,
+	"nombre" int4,
+	"asignatura" int4,
+	"director" int4,
+	"control" int4,
+	PRIMARY KEY("codigo"),
+	CONSTRAINT "Ref_programa_to_asignatura" FOREIGN KEY ("asignatura")
+		REFERENCES "asignatura"("codigo")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE,
+	CONSTRAINT "Ref_programa_to_director" FOREIGN KEY ("director")
+		REFERENCES "director"("codigo")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE cambios
+DROP TABLE IF EXISTS "cambios" CASCADE;
+
+-- CREATE TABLE cambios
+CREATE TABLE "cambios" (
+	"id" int4 NOT NULL,
+	"convenio" int4,
+	"descripcion" varchar,
+	"fecha" date,
+	PRIMARY KEY("id"),
+	CONSTRAINT "Ref_cambios_to_convenio" FOREIGN KEY ("convenio")
+		REFERENCES "convenio"("id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE practica
+DROP TABLE IF EXISTS "practica" CASCADE;
+
+-- CREATE TABLE practica
+CREATE TABLE "practica" (
+	"id" int4 NOT NULL,
+	"coordinador_docente" int4,
+	"estudiante" int4,
+	"coordinador_empresa" int4,
+	"valor" int4,
+	"fecha_inicio" date,
+	"fecha_fin" date,
+	"control" int4,
+	"asignatura" int4,
+	PRIMARY KEY("id"),
+	CONSTRAINT "Ref_practica_to_control" FOREIGN KEY ("control")
+		REFERENCES "control"("codigo")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE,
+	CONSTRAINT "Ref_practica_to_asignatura" FOREIGN KEY ("asignatura")
+		REFERENCES "asignatura"("codigo")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE practica_interna
+DROP TABLE IF EXISTS "practica_interna" CASCADE;
+
+-- CREATE TABLE practica_interna
+CREATE TABLE "practica_interna" (
+	"id" int4 NOT NULL,
+	"dependencia" int4,
+	"practica" int4,
+	PRIMARY KEY("id"),
+	CONSTRAINT "Ref_practica_interna_to_practica" FOREIGN KEY ("practica")
+		REFERENCES "practica"("id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE,
+	CONSTRAINT "Ref_practica_interna_to_dependencia" FOREIGN KEY ("dependencia")
+		REFERENCES "dependencia"("codigo")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
+-- DROP TABLE practica_externa
+DROP TABLE IF EXISTS "practica_externa" CASCADE;
+
+-- CREATE TABLE practica_externa
+CREATE TABLE "practica_externa" (
+	"id" int4 NOT NULL,
+	"convenio" int4,
+	"localidad" int4,
+	"practica" int4,
+	PRIMARY KEY("id"),
+	CONSTRAINT "Ref_practica_externa_to_convenio" FOREIGN KEY ("convenio")
+		REFERENCES "convenio"("id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE,
+	CONSTRAINT "Ref_practica_externa_to_localidad" FOREIGN KEY ("localidad")
+		REFERENCES "localidad"("id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE,
+	CONSTRAINT "Ref_practica_externa_to_practica" FOREIGN KEY ("practica")
+		REFERENCES "practica"("id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE
+);
+
