@@ -1,0 +1,1 @@
+[02-Jun-2015 15:33:21 America/Bogota] SELECT * from empresa   LIMIT 15 OFFSET 0
