@@ -86,7 +86,15 @@ $(".open-left").click(function(e){
     toggle_slimscroll(".slimscrollleft");
     $("body").trigger("resize");
 });
-
+$('#excel').on('click', function(){
+   
+         $.post("controlador/fachada.php", {
+            clase: 'ReporteProyectos',
+            oper: 'generarReporte'
+        }, function (archivo) {
+           window.location.href = '../' + 'Reportes.xlsx';
+        });   
+    });
 // LEFT SIDE MAIN NAVIGATION
 $("#sidebar-menu a").on('click',function(e){
   if(!$("#wrapper").hasClass("enlarged")){
