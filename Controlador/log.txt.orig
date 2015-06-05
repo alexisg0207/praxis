@@ -1,5 +1,6 @@
-[04-Jun-2015 19:36:52 America/Bogota] Localidad
-[04-Jun-2015 19:36:52 America/Bogota] SELECT * from localidad  ORDER BY id asc LIMIT 10 OFFSET 0
+<<<<<<< HEAD
+[04-Jun-2015 19:36:52 America/Bogota] Localidad
+[04-Jun-2015 19:36:52 America/Bogota] SELECT * from localidad  ORDER BY id asc LIMIT 10 OFFSET 0
 [04-Jun-2015 19:36:52 America/Bogota] Array
 (
     [total] => 1
@@ -66,8 +67,8 @@
         )
 
 )
-
-[04-Jun-2015 19:37:16 America/Bogota] 
+
+[04-Jun-2015 19:37:16 America/Bogota] 
 [04-Jun-2015 19:37:16 America/Bogota] Problemas en ::()
 No se pudo definir un receptor de mensajes. Argumentos recibidos:
 Array
@@ -75,8 +76,8 @@ Array
     [Clase] => DashboardQueries
     [oper] => practicasInternas
 )
-
-[04-Jun-2015 19:38:22 America/Bogota] 
+
+[04-Jun-2015 19:38:22 America/Bogota] 
 [04-Jun-2015 19:38:22 America/Bogota] Problemas en ::()
 No se pudo definir un receptor de mensajes. Argumentos recibidos:
 Array
@@ -84,8 +85,8 @@ Array
     [Clase] => DashboardQueries
     [oper] => practicasInternas
 )
-
-[04-Jun-2015 19:39:04 America/Bogota] 
+
+[04-Jun-2015 19:39:04 America/Bogota] 
 [04-Jun-2015 19:39:04 America/Bogota] Problemas en ::()
 No se pudo definir un receptor de mensajes. Argumentos recibidos:
 Array
@@ -93,8 +94,8 @@ Array
     [Clase] => Dashboardqueries
     [oper] => practicasInternas
 )
-
-[04-Jun-2015 19:42:32 America/Bogota] Dashboardqueries
+
+[04-Jun-2015 19:42:32 America/Bogota] Dashboardqueries
 [04-Jun-2015 19:42:32 America/Bogota] Problemas en ::()
 Imposible responder al mensaje enviado. Argumentos recibidos:
 Array
@@ -102,15 +103,15 @@ Array
     [clase] => Dashboardqueries
     [opcion] => practicasInternas
 )
-
-[04-Jun-2015 19:43:34 America/Bogota] Dashboardqueries
-[04-Jun-2015 19:43:34 America/Bogota] PHP Fatal error:  Call to a member function getPDO() on a non-object in C:\wamp\www\Praxis\Modelo\DashboardQueries.php on line 18
-[04-Jun-2015 19:43:34 America/Bogota] PHP Stack trace:
-[04-Jun-2015 19:43:34 America/Bogota] PHP   1. {main}() C:\wamp\www\Praxis\Controlador\fachada.php:0
-[04-Jun-2015 19:43:34 America/Bogota] PHP   2. Fachada->__construct() C:\wamp\www\Praxis\Controlador\fachada.php:4
-[04-Jun-2015 19:43:34 America/Bogota] PHP   3. Fachada->ejecutar() C:\wamp\www\Praxis\Controlador\fachada.php:27
-[04-Jun-2015 19:43:34 America/Bogota] PHP   4. Dashboardqueries->practicasInternas() C:\wamp\www\Praxis\Controlador\fachada.php:60
-[04-Jun-2015 19:43:52 America/Bogota] 
+
+[04-Jun-2015 19:43:34 America/Bogota] Dashboardqueries
+[04-Jun-2015 19:43:34 America/Bogota] PHP Fatal error:  Call to a member function getPDO() on a non-object in C:\wamp\www\Praxis\Modelo\DashboardQueries.php on line 18
+[04-Jun-2015 19:43:34 America/Bogota] PHP Stack trace:
+[04-Jun-2015 19:43:34 America/Bogota] PHP   1. {main}() C:\wamp\www\Praxis\Controlador\fachada.php:0
+[04-Jun-2015 19:43:34 America/Bogota] PHP   2. Fachada->__construct() C:\wamp\www\Praxis\Controlador\fachada.php:4
+[04-Jun-2015 19:43:34 America/Bogota] PHP   3. Fachada->ejecutar() C:\wamp\www\Praxis\Controlador\fachada.php:27
+[04-Jun-2015 19:43:34 America/Bogota] PHP   4. Dashboardqueries->practicasInternas() C:\wamp\www\Praxis\Controlador\fachada.php:60
+[04-Jun-2015 19:43:52 America/Bogota] 
 [04-Jun-2015 19:43:52 America/Bogota] Problemas en ::()
 No se pudo definir un receptor de mensajes. Argumentos recibidos:
 Array
@@ -118,8 +119,8 @@ Array
     [Clase] => Dashboardqueries
     [oper] => practicasInternas
 )
-
-[04-Jun-2015 19:47:48 America/Bogota] 
+
+[04-Jun-2015 19:47:48 America/Bogota] 
 [04-Jun-2015 19:47:48 America/Bogota] Problemas en ::()
 No se pudo definir un receptor de mensajes. Argumentos recibidos:
 Array
@@ -127,9 +128,9 @@ Array
     [Clase] => Dashboard
     [oper] => practicasInternas
 )
-
-[04-Jun-2015 19:49:03 America/Bogota] Localidad
-[04-Jun-2015 19:49:03 America/Bogota] SELECT * from localidad  ORDER BY id asc LIMIT 10 OFFSET 0
+
+[04-Jun-2015 19:49:03 America/Bogota] Localidad
+[04-Jun-2015 19:49:03 America/Bogota] SELECT * from localidad  ORDER BY id asc LIMIT 10 OFFSET 0
 [04-Jun-2015 19:49:03 America/Bogota] Array
 (
     [total] => 1
@@ -196,8 +197,8 @@ Array
         )
 
 )
-
-[04-Jun-2015 19:49:06 America/Bogota] 
+
+[04-Jun-2015 19:49:06 America/Bogota] 
 [04-Jun-2015 19:49:06 America/Bogota] Problemas en ::()
 No se pudo definir un receptor de mensajes. Argumentos recibidos:
 Array
@@ -205,22 +206,13 @@ Array
     [Clase] => Dashboard
     [oper] => practicasInternas
 )
-
-[04-Jun-2015 22:24:43 America/Bogota] Problemas en ::()
+
+=======
+[02-Jun-2015 15:33:21 America/Bogota] SELECT * from empresa   LIMIT 15 OFFSET 0
+[04-Jun-2015 17:40:51 America/Bogota] Problemas en ::()
 SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:28:57 America/Bogota] Problemas en ::()
+[04-Jun-2015 17:42:26 America/Bogota] Problemas en ::()
 SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:31 America/Bogota] Problemas en ::()
+[04-Jun-2015 17:48:51 America/Bogota] Problemas en ::()
 SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:33 America/Bogota] Problemas en ::()
-SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:35 America/Bogota] Problemas en ::()
-SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:37 America/Bogota] Problemas en ::()
-SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:42 America/Bogota] Problemas en ::()
-SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:44 America/Bogota] Problemas en ::()
-SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
-[04-Jun-2015 22:32:46 America/Bogota] Problemas en ::()
-SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres»
+>>>>>>> 1e95e5399efb696d87a1794650f10ec18cceb91d
