@@ -14,12 +14,19 @@ define('ROOT', filter_input(INPUT_SERVER, 'DOCUMENT_ROOT'));
 define('DOCUMENT_ROOT', substr('ROOT', -1) == '/' ? 'ROOT' : 'ROOT' . '/');
 define('RUTA_APLICACION', DOCUMENT_ROOT . 'demo003/');
 define('PHPEXCEL_ROOT', '../../includes/PHPExcel/');
+define('TMP_PATH', '../../');
 
-define('BASE_DATOS', 'practica');
+//define('BASE_DATOS', 'practica');
+//define('SERVIDOR', 'localhost');
+//define('PUERTO', '5432');
+//define('USUARIO', 'postgres');
+//define('CONTRASENA', 'root');
+
+define('BASE_DATOS', 'Practicas');
 define('SERVIDOR', 'localhost');
 define('PUERTO', '5432');
 define('USUARIO', 'postgres');
-define('CONTRASENA', 'root');
+define('CONTRASENA', 'luisa100');
 
 spl_autoload_register('__autoload');
 // Para PHP 6 E_STRICT es parte de E_ALL -- error_reporting(E_ALL | E_STRICT); para verificación exhaustivo --
