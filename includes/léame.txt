@@ -1,0 +1,7 @@
+
+El archivo de idioma español se corrigió:
+	..\plupload\i18n\es.js
+
+El css que controla el tamaño de la columna con el nombre del archivo se corrigió:
+	..\plupload\jquery.plupload.queue\jquery.plupload.queue.css - linea 110: queda así: 
+		.plupload_filelist .plupload_file_name {width: 75%}
