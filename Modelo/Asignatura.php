@@ -43,14 +43,29 @@ class Asignatura {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
                     'id' => $fila['id'],
-                    'programa' => $fila['programa'],
-                    'nombre' => $fila['nombre'],
-                    'coordinador' => $fila['coordinador'],
-                    'codigo_u' => $fila['codigo_u']
+                    'cell' => [
+                        'id' => $fila['id'],
+                        'programa' => $fila['programa'],
+                        'nombre' => $fila['nombre'],
+                        'coordinador' => $fila['coordinador'],
+                        'codigo_u' => $fila['codigo_u']
+                    ]
                 ];
             }
         }
         echo json_encode($respuesta);
     }
+
+    public function getSelect($param) {
+        $json = FALSE;
+        extract($param);
+        $select = "";
+        $select .= "<option value='0'>Seleccione una asignatura</option>";
+        foreach ($conexion->getPDO()->query("SELECT id, nombre FROM asignatura ORDER BY nombre") as $fila) {
+            $select .= "<option value='{$fila['id']}'>{$fila['nombre']}</option>";
+        }
+        echo $json ? json_encode($select) : ("<select id='$id'>$select</select>");
+    }
+
 
 }

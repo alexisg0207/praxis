@@ -42,10 +42,25 @@ class Localidad {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
                     'id' => $fila['id'],
-                    'nombre' => $fila['nombre']
+                    'cell' =>[
+                        'id' => $fila['id'],
+                        'nombre' => $fila['nombre']
+                    ]
                 ];
             }
         }
+        error_log(print_r($respuesta, true));
         echo json_encode($respuesta);
+    }
+
+    public function getSelect($param) {
+        $json = FALSE;
+        extract($param);
+        $select = "";
+        $select .= "<option value='0'>Seleccione una localidad</option>";
+        foreach ($conexion->getPDO()->query("SELECT id, nombre FROM localidad ORDER BY nombre") as $fila) {
+            $select .= "<option value='{$fila['id']}'>{$fila['nombre']}</option>";
+        }
+        echo $json ? json_encode($select) : ("<select id='$id'>$select</select>");
     }
 }

@@ -27,7 +27,7 @@ class Estudiante {
 
     function del($param) {
         extract($param);
-        $conexion->getPDO()->exec("DELETE FROM estudiante WHERE codigo = '$codigo'");
+        $conexion->getPDO()->exec("DELETE FROM estudiante WHERE codigo = '$id'");
         echo $conexion->getEstado();
     }
 
@@ -42,14 +42,29 @@ class Estudiante {
         if (($rs = $conexion->getPDO()->query($sql))) {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
-                    'codigo' => $fila['codigo'],
-                    'documento' => $fila['documento'],
-                    'nombre' => $fila['nombre'],
-                    'apellido' => $fila['apellido'],
-                    'asignatura' => $fila['asignatura']
+                    'id' => $fila['codigo'],
+                    'cell' => [
+                        'codigo' => $fila['codigo'],
+                        'documento' => $fila['documento'],
+                        'nombre' => $fila['nombre'],
+                        'apellido' => $fila['apellido'],
+                        'asignatura' => $fila['asignatura']
+                    ]
                 ];
             }
         }
         echo json_encode($respuesta);
     }
+
+    public function getSelect($param) {
+        $json = FALSE;
+        extract($param);
+        $select = "";
+        $select .= "<option value='0'>Seleccione un estudiante</option>";
+        foreach ($conexion->getPDO()->query("SELECT codigo, nombre, apellido FROM estudiante ORDER BY nombre") as $fila) {
+            $select .= "<option value='{$fila['codigo']}'>{$fila['nombre']} {$fila['apellido']} - {$fila['codigo']}</option>";
+        }
+        echo $json ? json_encode($select) : ("<select id='$id'>$select</select>");
+    }
+
 }

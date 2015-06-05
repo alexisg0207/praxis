@@ -42,9 +42,12 @@ class Profesor_coordinador {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
                     'id' => $fila['id'],
-                    'documento' => $fila['documento'],
-                    'nombre' => $fila['nombre'],
-                    'apellido' => $fila['apellido']
+                    'cell' => [
+                        'id' => $fila['id'],
+                        'documento' => $fila['documento'],
+                        'nombre' => $fila['nombre'],
+                        'apellido' => $fila['apellido']
+                    ]
                 ];
             }
         }
@@ -57,7 +60,7 @@ class Profesor_coordinador {
         $select = "";
         $select .= "<option value='0'>Seleccione un coordinador</option>";
         foreach ($conexion->getPDO()->query("SELECT id, nombre, apellido FROM profesor_coordinador ORDER BY nombre") as $fila) {
-            $select .= "<option value='{$fila['id']}'>{$fila['nombre']}&nbsp;{$fila['apellido']}</option>";
+            $select .= "<option value='{$fila['id']}'>{$fila['nombre']} {$fila['apellido']}</option>";
         }
         echo $json ? json_encode($select) : ("<select id='$id'>$select</select>");
     }

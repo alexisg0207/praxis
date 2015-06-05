@@ -1,27 +1,55 @@
 $(document).ready(function(){
 
 	crearTablaEmpresas();
-	$("#tablaEmpresas").setGridWidth($('#cont-emp').width(), true);
+
+	$("#tablaConvenios").setGridWidth($('#cont-emp').width(), true);
 });
 
 function crearTablaEmpresas() {
-    jqGridDeptos = jQuery("#tablaEmpresas").jqGrid({
+    jqGridDeptos = jQuery("#tablaConvenios").jqGrid({
         url:'controlador/fachada.php',
         datatype: "json",
         mtype: 'POST',
         postData: {
-            clase: 'Empresa',
+            clase: 'Convenio',
             oper:'select'
         },
-        colNames:['Nit','Nombre', 'Localidad', 'Responsable'],
+        colNames:['Id','Fecha inicio', 'Fecha fin', 'Razon', 'Empresa'],
         colModel:[
-            {name:'nit', index:'nit', width:10, align:'center', editable:true, classes:"grid-col", editoptions:{size:37,
+            {name:'id', index:'id', width:10, align:'center', editable:true, classes:"grid-col", editoptions:{size:37,
                 dataInit: function(elemento) {$(elemento).width(282)}
                 }},
-            {name:'nombre', index:'nombre', width:40, editable:true, classes:"grid-col", editoptions:{size:37,
+            {name:'fecha_inicio', index:'fecha_inicio', width:40, editable:true, classes:"grid-col", 
+                edittype: 'text',
+                editoptions:{
+                    size: 37, maxlengh: 10,
+                    dataInit: function(elemento) {
+                        $(elemento).datepicker({dateFormat: 'yy-mm-dd'})
+                    }
+                }
+            },
+            {name:'fecha_fin', index:'fecha_fin', width:40, editable:true, classes:"grid-col", 
+                edittype: 'text',
+                editoptions:{
+                    size: 37, maxlengh: 10,
+                    dataInit: function(elemento) {
+                        $(elemento).datepicker({dateFormat: 'yy-mm-dd'})
+                    }
+                }
+            },
+            {name:'razon', index:'razon', width:40, editable:true, classes:"grid-col", editoptions:{size:37,
                 dataInit: function(elemento) {$(elemento).width(282)}
                 }},
-            {name:'localidad', index:'localidad', width:10, align:'center', editable:true, classes:"grid-col", 
+            {name:'nit_empresa', index:'nit_empresa', width:40, editable:true, classes:"grid-col", 
+                edittype:'select',
+                editoptions:{
+                    dataInit: function(elemento) {
+                        $(elemento).width(282)
+                    },
+                    dataUrl:'controlador/fachada.php?clase=Empresa&oper=getSelect'
+                }
+            }
+            /*{name:'localidad', index:'localidad', width:10, align:'center', editable:true, classes:"grid-col", 
              edittype:'select',
              editoptions:{
 	                dataInit: function(elemento) {$(elemento).width(282)},
@@ -29,7 +57,7 @@ function crearTablaEmpresas() {
                 }},
             {name:'responsable_nombre', index:'responsable_nombre', width:40, editable:false, classes:"grid-col", editoptions:{size:37,
                 dataInit: function(elemento) {$(elemento).width(282)}
-                }}
+                }}*/
         ],
         /*{name:'fk_departamento', index:'fk_departamento', hidden: false, width:200, editable:true, edittype:'select',
                     editoptions: {
@@ -40,22 +68,22 @@ function crearTablaEmpresas() {
                 }*/
         rowNum:10,
         width:900,
-        pager: '#pTablaEmpresas',
-        sortname: 'nit',
+        pager: '#pTablaConvenios',
+        sortname: 'id',
         viewrecords: true,
         sortorder: "asc",
         multiselect: false,
         shrinkToFit: true,
         autowidth: true,
         height: 'auto',
-        editurl: "controlador/fachada.php?clase=Empresa",
+        editurl: "controlador/fachada.php?clase=Convenio",
 		loadError: function(jqXHR, textStatus, errorThrown) {
             alert(jqXHR.responseText);
         },
         onSelectRow: function(nit) {
         	//nada
         }
-    }).jqGrid('navGrid', '#pTablaEmpresas', {
+    }).jqGrid('navGrid', '#pTablaConvenios', {
         refresh: true,
         edit: true,
         add: true,

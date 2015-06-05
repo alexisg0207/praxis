@@ -27,7 +27,7 @@ class Director {
 
     function del($param) {
         extract($param);
-        $conexion->getPDO()->exec("DELETE FROM director WHERE codigo = '$codigo'");
+        $conexion->getPDO()->exec("DELETE FROM director WHERE codigo = '$id'");
         echo $conexion->getEstado();
     }
 
@@ -43,9 +43,12 @@ class Director {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
                     'codigo' => $fila['codigo'],
-                    'nombre' => $fila['nombre'],
-                    'documento' => $fila['documento'],
-                    'apellido' => $fila['apellido']
+                    'cell' => [
+                        'codigo' => $fila['codigo'],
+                        'nombre' => $fila['nombre'],
+                        'documento' => $fila['documento'],
+                        'apellido' => $fila['apellido']
+                    ]
                 ];
             }
         }

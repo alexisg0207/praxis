@@ -27,7 +27,7 @@ class Control {
 
     function del($param) {
         extract($param);
-        $conexion->getPDO()->exec("DELETE FROM control WHERE codigo = '$codigo'");
+        $conexion->getPDO()->exec("DELETE FROM control WHERE codigo = '$id'");
         echo $conexion->getEstado();
     }
 

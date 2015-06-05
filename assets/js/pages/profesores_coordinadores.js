@@ -1,61 +1,51 @@
 $(document).ready(function(){
 
 	crearTablaEmpresas();
-	$("#tablaEmpresas").setGridWidth($('#cont-emp').width(), true);
+	$("#tablaProfesoresCoordinadores").setGridWidth($('#cont-emp').width(), true);
 });
 
 function crearTablaEmpresas() {
-    jqGridDeptos = jQuery("#tablaEmpresas").jqGrid({
+    jqGridDeptos = jQuery("#tablaProfesoresCoordinadores").jqGrid({
         url:'controlador/fachada.php',
         datatype: "json",
         mtype: 'POST',
         postData: {
-            clase: 'Empresa',
+            clase: 'Profesor_coordinador',
             oper:'select'
         },
-        colNames:['Nit','Nombre', 'Localidad', 'Responsable'],
+        colNames:['Id','Nombre', 'Apellido', 'Documento'],
         colModel:[
-            {name:'nit', index:'nit', width:10, align:'center', editable:true, classes:"grid-col", editoptions:{size:37,
+            {name:'id', index:'id', width:10, align:'center', editable:true, classes:"grid-col", editoptions:{size:37,
                 dataInit: function(elemento) {$(elemento).width(282)}
                 }},
             {name:'nombre', index:'nombre', width:40, editable:true, classes:"grid-col", editoptions:{size:37,
                 dataInit: function(elemento) {$(elemento).width(282)}
                 }},
-            {name:'localidad', index:'localidad', width:10, align:'center', editable:true, classes:"grid-col", 
-             edittype:'select',
-             editoptions:{
-	                dataInit: function(elemento) {$(elemento).width(282)},
-	                dataUrl:'controlador/fachada.php?clase=Localidad&oper=getSelect'
-                }},
-            {name:'responsable_nombre', index:'responsable_nombre', width:40, editable:false, classes:"grid-col", editoptions:{size:37,
+            {name:'apellido', index:'apellido', width:40, editable:true, classes:"grid-col", editoptions:{size:37,
                 dataInit: function(elemento) {$(elemento).width(282)}
-                }}
+                }},
+            {name:'documento', index:'documento', width:40, editable:true, classes:"grid-col", editoptions:{size:37,
+                dataInit: function(elemento) {$(elemento).width(282)}
+                }},
         ],
-        /*{name:'fk_departamento', index:'fk_departamento', hidden: false, width:200, editable:true, edittype:'select',
-                    editoptions: {
-                        dataInit: function(elemento) {$(elemento).width(292)}, 
-                        dataUrl:'controlador/fachada.php?clase=Departamento&oper=getSelect',
-                        defaultValue: idDepto
-                    }
-                }*/
         rowNum:10,
         width:900,
-        pager: '#pTablaEmpresas',
-        sortname: 'nit',
+        pager: '#pTablaProfesoresCoordinadores',
+        sortname: 'id',
         viewrecords: true,
         sortorder: "asc",
         multiselect: false,
         shrinkToFit: true,
         autowidth: true,
         height: 'auto',
-        editurl: "controlador/fachada.php?clase=Empresa",
+        editurl: "controlador/fachada.php?clase=Profesor_coordinador",
 		loadError: function(jqXHR, textStatus, errorThrown) {
             alert(jqXHR.responseText);
         },
         onSelectRow: function(nit) {
         	//nada
         }
-    }).jqGrid('navGrid', '#pTablaEmpresas', {
+    }).jqGrid('navGrid', '#pTablaProfesoresCoordinadores', {
         refresh: true,
         edit: true,
         add: true,
@@ -73,6 +63,9 @@ function crearTablaEmpresas() {
             //postdata.idNuevo = $('#id').val();
             return[true, ''];
         },
+        beforeShowForm: function(form) { 
+            $('#tr_id', form).hide(); 
+        },
         afterSubmit: function (response, postdata) {
             var respuesta = jQuery.parseJSON(response.responseText);
             return [respuesta.ok, respuesta.mensaje, ''];
@@ -81,6 +74,9 @@ function crearTablaEmpresas() {
     {   // Antes de enviar a Departamento->add(...) se agrega un POST
         modal:true, jqModal:true,
         width:800,
+        beforeShowForm: function(form) { 
+            $('#tr_id', form).show(); 
+        },
         afterSubmit: function (response, postdata) {
             var respuesta = jQuery.parseJSON(response.responseText);
             return [respuesta.ok, respuesta.mensaje, ''];

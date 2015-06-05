@@ -42,7 +42,7 @@ class Fachada {
         // obtener los nombres de la clase y el método
         $clase = $args['clase'];
         $metodo = $args['oper'];
-
+        error_log($clase);
         if (class_exists($clase)) {
 //        Un simple control de log        
 //        if ($metodo == 'del' || $metodo == 'edit') {
@@ -68,3 +68,5 @@ class Fachada {
     }
 
 }
+
+    

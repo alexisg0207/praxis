@@ -1,0 +1,14 @@
+.grid-col {
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.ui-jqgrid tr.jqgrow td {font-size:12px}
+
+
+.ui-jqgrid .ui-jqgrid-btable
+{
+  table-layout:auto !important;
+}

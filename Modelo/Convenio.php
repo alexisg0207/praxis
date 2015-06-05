@@ -14,13 +14,13 @@
 class Convenio {
     function add($param) {
         extract($param);
-        $conexion->getPDO()->exec("INSERT INTO convenio(id, fecha_inicio, fecha_fin, documentacion, responsable, razon, nit_empresa) VALUES ('$id', '$fecha_inicio', '$fecha_fin', '$documentacion', '$responsable', '$razon', '$nit_empresa')");
+        $conexion->getPDO()->exec("INSERT INTO convenio(id, fecha_inicio, fecha_fin, documentacion, razon, nit_empresa) VALUES ('$id', '$fecha_inicio', '$fecha_fin', '$documentacion', '$razon', '$nit_empresa')");
         echo $conexion->getEstado();
     }
 
     function edit($param) {
         extract($param);
-        $conexion->getPDO()->exec("UPDATE convenio SET id='$id', fecha_inicio='$fecha_inicio', fecha_fin='$fecha_fin', documentacion='$documentacion', responsable='$responsable', razon='$razon', nit_empresa='$nit_empresa' WHERE id = '$id'");
+        $conexion->getPDO()->exec("UPDATE convenio SET id='$id', fecha_inicio='$fecha_inicio', fecha_fin='$fecha_fin', documentacion='$documentacion', razon='$razon', nit_empresa='$nit_empresa' WHERE id = '$id'");
         echo $conexion->getEstado();
     }
 
@@ -42,16 +42,29 @@ class Convenio {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
                     'id' => $fila['id'],
-                    'fecha_inicio' => $fila['fecha_inicio'],
-                    'fecha_fin' => $fila['fecha_fin'],
-                    'documentacion' => $fila['documentacion'],
-                    'responsable' => $fila['responsable'],
-                    'razon' => $fila['razon'],
-                    'nit_empresa' => $fila['nit_empresa']
+                    'cell' => [
+                        'id' => $fila['id'],
+                        'fecha_inicio' => $fila['fecha_inicio'],
+                        'fecha_fin' => $fila['fecha_fin'],
+                        'documentacion' => $fila['documentacion'],
+                        'razon' => $fila['razon'],
+                        'nit_empresa' => $fila['nit_empresa']
+                    ]
                 ];
             }
         }
         echo json_encode($respuesta);
+    }
+
+    public function getSelect($param) {
+        $json = FALSE;
+        extract($param);
+        $select = "";
+        $select .= "<option value='0'>Seleccione una empresa</option>";
+        foreach ($conexion->getPDO()->query("SELECT id, nit_empresa FROM convenio ORDER BY id") as $fila) {
+            $select .= "<option value='{$fila['id']}'>{$fila['nit_empresa']}</option>";
+        }
+        echo $json ? json_encode($select) : ("<select id='$id'>$select</select>");
     }
 
 }

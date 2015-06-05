@@ -27,7 +27,7 @@ class Dependencia {
 
     function del($param) {
         extract($param);
-        $conexion->getPDO()->exec("DELETE FROM dependencia WHERE codigo = '$codigo'");
+        $conexion->getPDO()->exec("DELETE FROM dependencia WHERE codigo = '$id'");
         echo $conexion->getEstado();
     }
 
@@ -42,8 +42,11 @@ class Dependencia {
         if (($rs = $conexion->getPDO()->query($sql))) {
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 $respuesta['rows'][] = [
-                    'codigo' => $fila['codigo'],
-                    'nombre' => $fila['nombre']
+                    'id' => $fila['codigo'],
+                    'cell' => [
+                        'codigo' => $fila['codigo'],
+                        'nombre' => $fila['nombre']
+                    ]
                 ];
             }
         }

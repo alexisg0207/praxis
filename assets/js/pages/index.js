@@ -1,6 +1,7 @@
 $(document).ready(function(){
-
-	//Obtener de base de datos
+	//Obtener de la base de datos
+	pExternas = 20;
+	pInternas = 12;
 
   	Morris.Donut({
 	  element: 'donut-practicas',
@@ -10,8 +11,8 @@ $(document).ready(function(){
 	  	"#B8CFB8"
 	  ],
 	  data: [
-	    {label: "Practicas externas", value: 12},
-	    {label: "Practicas internas", value: 20}
+	    {label: "Practicas externas", value: pExternas},
+	    {label: "Practicas internas", value: pInternas}
 	  ]
 	});
 

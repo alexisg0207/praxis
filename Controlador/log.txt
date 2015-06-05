@@ -1,1 +1,208 @@
-[02-Jun-2015 15:33:21 America/Bogota] SELECT * from empresa   LIMIT 15 OFFSET 0
+[04-Jun-2015 19:36:52 America/Bogota] Localidad
+[04-Jun-2015 19:36:52 America/Bogota] SELECT * from localidad  ORDER BY id asc LIMIT 10 OFFSET 0
+[04-Jun-2015 19:36:52 America/Bogota] Array
+(
+    [total] => 1
+    [page] => 1
+    [records] => 5
+    [otras cláusulas] =>  ORDER BY id asc LIMIT 10 OFFSET 0
+    [rows] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [cell] => Array
+                        (
+                            [id] => 1
+                            [nombre] => localidad 1
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [cell] => Array
+                        (
+                            [id] => 2
+                            [nombre] => localidad 2
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [id] => 3
+                    [cell] => Array
+                        (
+                            [id] => 3
+                            [nombre] => localidad 3
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [cell] => Array
+                        (
+                            [id] => 4
+                            [nombre] => localidad 4
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [cell] => Array
+                        (
+                            [id] => 5
+                            [nombre] => localidad 5
+                        )
+
+                )
+
+        )
+
+)
+
+[04-Jun-2015 19:37:16 America/Bogota] 
+[04-Jun-2015 19:37:16 America/Bogota] Problemas en ::()
+No se pudo definir un receptor de mensajes. Argumentos recibidos:
+Array
+(
+    [Clase] => DashboardQueries
+    [oper] => practicasInternas
+)
+
+[04-Jun-2015 19:38:22 America/Bogota] 
+[04-Jun-2015 19:38:22 America/Bogota] Problemas en ::()
+No se pudo definir un receptor de mensajes. Argumentos recibidos:
+Array
+(
+    [Clase] => DashboardQueries
+    [oper] => practicasInternas
+)
+
+[04-Jun-2015 19:39:04 America/Bogota] 
+[04-Jun-2015 19:39:04 America/Bogota] Problemas en ::()
+No se pudo definir un receptor de mensajes. Argumentos recibidos:
+Array
+(
+    [Clase] => Dashboardqueries
+    [oper] => practicasInternas
+)
+
+[04-Jun-2015 19:42:32 America/Bogota] Dashboardqueries
+[04-Jun-2015 19:42:32 America/Bogota] Problemas en ::()
+Imposible responder al mensaje enviado. Argumentos recibidos:
+Array
+(
+    [clase] => Dashboardqueries
+    [opcion] => practicasInternas
+)
+
+[04-Jun-2015 19:43:34 America/Bogota] Dashboardqueries
+[04-Jun-2015 19:43:34 America/Bogota] PHP Fatal error:  Call to a member function getPDO() on a non-object in C:\wamp\www\Praxis\Modelo\DashboardQueries.php on line 18
+[04-Jun-2015 19:43:34 America/Bogota] PHP Stack trace:
+[04-Jun-2015 19:43:34 America/Bogota] PHP   1. {main}() C:\wamp\www\Praxis\Controlador\fachada.php:0
+[04-Jun-2015 19:43:34 America/Bogota] PHP   2. Fachada->__construct() C:\wamp\www\Praxis\Controlador\fachada.php:4
+[04-Jun-2015 19:43:34 America/Bogota] PHP   3. Fachada->ejecutar() C:\wamp\www\Praxis\Controlador\fachada.php:27
+[04-Jun-2015 19:43:34 America/Bogota] PHP   4. Dashboardqueries->practicasInternas() C:\wamp\www\Praxis\Controlador\fachada.php:60
+[04-Jun-2015 19:43:52 America/Bogota] 
+[04-Jun-2015 19:43:52 America/Bogota] Problemas en ::()
+No se pudo definir un receptor de mensajes. Argumentos recibidos:
+Array
+(
+    [Clase] => Dashboardqueries
+    [oper] => practicasInternas
+)
+
+[04-Jun-2015 19:47:48 America/Bogota] 
+[04-Jun-2015 19:47:48 America/Bogota] Problemas en ::()
+No se pudo definir un receptor de mensajes. Argumentos recibidos:
+Array
+(
+    [Clase] => Dashboard
+    [oper] => practicasInternas
+)
+
+[04-Jun-2015 19:49:03 America/Bogota] Localidad
+[04-Jun-2015 19:49:03 America/Bogota] SELECT * from localidad  ORDER BY id asc LIMIT 10 OFFSET 0
+[04-Jun-2015 19:49:03 America/Bogota] Array
+(
+    [total] => 1
+    [page] => 1
+    [records] => 5
+    [otras cláusulas] =>  ORDER BY id asc LIMIT 10 OFFSET 0
+    [rows] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [cell] => Array
+                        (
+                            [id] => 1
+                            [nombre] => localidad 1
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [cell] => Array
+                        (
+                            [id] => 2
+                            [nombre] => localidad 2
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [id] => 3
+                    [cell] => Array
+                        (
+                            [id] => 3
+                            [nombre] => localidad 3
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [cell] => Array
+                        (
+                            [id] => 4
+                            [nombre] => localidad 4
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [cell] => Array
+                        (
+                            [id] => 5
+                            [nombre] => localidad 5
+                        )
+
+                )
+
+        )
+
+)
+
+[04-Jun-2015 19:49:06 America/Bogota] 
+[04-Jun-2015 19:49:06 America/Bogota] Problemas en ::()
+No se pudo definir un receptor de mensajes. Argumentos recibidos:
+Array
+(
+    [Clase] => Dashboard
+    [oper] => practicasInternas
+)
+
